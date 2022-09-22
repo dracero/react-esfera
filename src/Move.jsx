@@ -7,78 +7,135 @@ const Move  = (props) => {
   const { nodes, materials} = useGLTF("/ejeConVector.glb");
   //const { actions } = useAnimations(animations, group);
 
-  //acá es donde tengo que poner las funciones para ir g
-  const rozamieto = 
-     <mesh
-     name="Cylinder005"
-     castShadow
-     receiveShadow
-     geometry={nodes.Cylinder005.geometry}
-     material={materials["Material.003"]}
-     position={[-6.17, -0.02, -3.17]}
-     rotation={[-1.57, 0.01, -0.04]}
-     scale={[1.04, 1.16, 1]}
-   />
-  return (
+ return (
     <group ref={group} {...props} dispose={null}  position = {[2, -5, -1]}>
     <group name="Scene">
-      <group
-        name="Plane"
-        position={[-5.29, 10.59, -7.28]}
-        rotation={[1.58, 0.01, -1.56]}
-      />
-      <mesh
-        name="Cylinder001"
-        castShadow
-        receiveShadow
-        geometry={nodes.Cylinder001.geometry}
-        material={materials["Material.004"]}
-        position={[-3.6, 2.09, -2.01]}
-        rotation={[1.58, 0.01, -1.56]}
-        scale={[1, 0.48, 1]}
-      />
-      <mesh
-        name="Cylinder"
-        castShadow
-        receiveShadow
-        geometry={nodes.Cylinder.geometry}
-        material={materials["Material.007"]}
-        position={[-0.05, 2.1, -2.02]}
-        rotation={[0.01, -0.02, -1.57]}
-        scale={[1.04, 1.16, 1]}
-      />
-      <mesh
-        name="Cylinder002"
-        castShadow
-        receiveShadow
-        geometry={nodes.Cylinder002.geometry}
-        material={materials["Material.006"]}
-        position={[-3.5, 0.6, -2.05]}
-        rotation={[-0.08, 1.15, -3.06]}
-        scale={[1.04, 1.16, 1]}
-      />
-      <mesh
-        name="Cylinder004"
-        castShadow
-        receiveShadow
-        geometry={nodes.Cylinder004.geometry}
-        material={materials["Material.005"]}
-        position={[-3.58, 3.55, -2.12]}
-        rotation={[-0.05, 0.01, 0.02]}
-        scale={[1.04, 1.16, 1]}
-      />
-       {rozamieto}
-      <mesh
-        name="Cylinder003"
-        castShadow
-        receiveShadow
-        geometry={nodes.Cylinder003.geometry}
-        material={materials["Material.003"]}
-        position={[-1.25, 0, -2.84]}
-        rotation={[-1.57, 0.01, -0.04]}
-        scale={[1.04, 1.16, 1]}
-      />
-    </group>
+        <group
+          name="Plane"
+          position={[-5.29, 10.59, -7.28]}
+          rotation={[1.58, 0.01, -1.56]}
+        />
+        <mesh
+          name="Cylinder001"
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder001.geometry}
+          material={materials["Material.004"]}
+          position={[-1.91, 5.38, -0.29]}
+          rotation={[1.58, 0.01, -1.56]}
+          scale={[1, 0.48, 1]}
+        />
+        <mesh
+          name="Cylinder"
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder.geometry}
+          material={materials["Material.007"]}
+          position={[1.64, 5.39, -0.3]}
+          rotation={[0.01, -0.02, -1.57]}
+          scale={[1.04, 1.16, 1]}
+        />
+        <mesh
+          name="Cylinder002"
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder002.geometry}
+          material={materials["Material.006"]}
+          position={[-1.81, 3.88, -0.33]}
+          rotation={[-0.08, 1.15, -3.06]}
+          scale={[1.04, 1.16, 1]}
+        />
+        <mesh
+          name="Cylinder004"
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder004.geometry}
+          material={materials["Material.005"]}
+          position={[-4.75, 6.76, 0.24]}
+          rotation={[0.41, 0.01, 0.02]}
+          scale={[1.04, 1, 0.97]}
+        />
+        <mesh
+          name="Cylinder005"
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder005.geometry}
+          material={materials["Material.003"]}
+          position={[-4.48, 3.93, -2.12]}
+          rotation={[-1.12, 0.01, -0.04]}
+          scale={[1.04, 1.16, 1]}
+        />
+        <mesh
+          name="Cylinder006"
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder006.geometry}
+          material={materials["Material.001"]}
+          position={[-4.75, 6.76, 0.24]}
+          rotation={[0.41, 0.01, 0.02]}
+          scale={[1.04, 1, 0.97]}
+        />
+        <mesh
+          name="Cylinder007"
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder007.geometry}
+          material={materials["Material.002"]}
+          position={[-4.48, 3.93, -2.12]}
+          rotation={[-1.12, 0.01, -0.04]}
+          scale={[1.04, 1.16, 1]}
+        />
+        <mesh
+          name="Cylinder008"
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder008.geometry}
+          material={materials["Material.008"]}
+          position={[-4.75, 6.76, 0.24]}
+          rotation={[0.41, 0.01, 0.02]}
+          scale={[1.04, 1, 0.97]}
+        />
+        <mesh
+          name="Cylinder009"
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder009.geometry}
+          material={materials["Material.009"]}
+          position={[-4.75, 6.76, 0.24]}
+          rotation={[0.41, 0.01, 0.02]}
+          scale={[1.04, 1, 0.97]}
+        />
+        <mesh
+          name="Cylinder010"
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder010.geometry}
+          material={materials["Material.010"]}
+          position={[-4.75, 6.76, 0.24]}
+          rotation={[0.41, 0.01, 0.02]}
+          scale={[1.04, 1, 0.97]}
+        />
+        <mesh
+          name="Cylinder011"
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder011.geometry}
+          material={materials["Material.005"]}
+          position={[0.67, 6.69, 0.23]}
+          rotation={[0.41, 0.01, 0.02]}
+          scale={[1.04, 1, 0.97]}
+        />
+        <mesh
+          name="Cylinder003"
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder003.geometry}
+          material={materials["Material.003"]}
+          position={[0.52, 3.9, -1.86]}
+          rotation={[-1.12, 0.01, -0.04]}
+          scale={[1.04, 1.16, 1]}
+        />
+      </group>
   </group>
   );
 }
