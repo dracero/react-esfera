@@ -7,8 +7,15 @@ const Move  = (props) => {
   const group = useRef();
   const { nodes, materials} = useGLTF("/ejeConVector.glb");
   const normal = useSelector(state => state.vector.disnor)
-  console.log(normal)
+  const  torque = useSelector(state => state.vector.distor)
+  const  peso = useSelector(state => state.vector.diswei)
+  const  friccion = useSelector(state => state.vector.disfric)
+  console.log(torque)
   //const { actions } = useAnimations(animations, group);
+
+const momento = () =>{
+   
+}
   
  return (
     <group ref={group} {...props} dispose={null}  position = {[2, -5, -1]}>
@@ -28,17 +35,19 @@ const Move  = (props) => {
           rotation={[1.58, 0.01, -1.56]}
           scale={[1, 0.48, 1]}
         />
-        <mesh
-          name="Cylinder" //torque
-          castShadow
-          receiveShadow
-          geometry={nodes.Cylinder.geometry}
-          material={materials["Material.007"]}
-          position={[1.64, 5.39, -0.3]}
-          rotation={[0.01, -0.02, -1.57]}
-          scale={[1.04, 1.16, 1]}
-        />
-        <mesh
+        {torque ?<mesh 
+                      name="Cylinder" //torque
+                      castShadow
+                      receiveShadow
+                      geometry={nodes.Cylinder.geometry}
+                      material={materials["Material.007"]}
+                      position={[1.64, 5.39, -0.3]}
+                      rotation={[0.01, -0.02, -1.57]}
+                      scale={[1.04, 1.16, 1]}
+                /> : null
+        }
+        {peso ?
+         <mesh
           name="Cylinder002" //vector que representa el peso
           castShadow
           receiveShadow
@@ -47,7 +56,10 @@ const Move  = (props) => {
           position={[-1.81, 3.88, -0.33]}
           rotation={[-0.08, 1.15, -3.06]}
           scale={[1.04, 1.16, 1]}
-        />
+        />: 
+        null}
+        {normal ? 
+        <group>
         <mesh
           name="Cylinder004"// una normal
           castShadow
@@ -57,7 +69,7 @@ const Move  = (props) => {
           position={[-4.75, 6.76, 0.24]}
           rotation={[0.41, 0.01, 0.02]}
           scale={[1.04, 1, 0.97]}
-        />
+        />,
         <mesh
           name="Cylinder011"//una normal
           castShadow
@@ -67,7 +79,7 @@ const Move  = (props) => {
           position={[0.67, 6.69, 0.23]}
           rotation={[0.41, 0.01, 0.02]}
           scale={[1.04, 1, 0.97]}
-        />
+        />,
         <mesh
           name="Cylinder006"//una normal
           castShadow
@@ -77,7 +89,7 @@ const Move  = (props) => {
           position={[-4.75, 6.76, 0.24]}
           rotation={[0.41, 0.01, 0.02]}
           scale={[1.04, 1, 0.97]}
-        />
+        />,
         <mesh
           name="Cylinder008" //normal
           castShadow
@@ -87,7 +99,7 @@ const Move  = (props) => {
           position={[-4.75, 6.76, 0.24]}
           rotation={[0.41, 0.01, 0.02]}
           scale={[1.04, 1, 0.97]}
-        />
+        />,
          <mesh
           name="Cylinder009" // normal
           castShadow
@@ -97,7 +109,7 @@ const Move  = (props) => {
           position={[-4.75, 6.76, 0.24]}
           rotation={[0.41, 0.01, 0.02]}
           scale={[1.04, 1, 0.97]}
-        />
+        />,
         <mesh
           name="Cylinder010" //normal
           castShadow
@@ -108,6 +120,9 @@ const Move  = (props) => {
           rotation={[0.41, 0.01, 0.02]}
           scale={[1.04, 1, 0.97]}
         />
+        </group>: null}
+        {friccion ?
+        <group>
         <mesh
           name="Cylinder007"//rosamiento
           castShadow
@@ -138,6 +153,8 @@ const Move  = (props) => {
           rotation={[-1.12, 0.01, -0.04]}
           scale={[1.04, 1.16, 1]}
         />
+       </group>:
+       null} 
       </group>
   </group>
   );
