@@ -1,4 +1,4 @@
-const vector = (state = false, action) => {
+const vector = (state = true, action) => {
     switch(action.type){
         case "FRICTION":
             return{

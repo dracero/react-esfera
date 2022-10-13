@@ -11,30 +11,32 @@ import store from "./store/store"
 
 const App  = (props) => {
   const dispatch = useDispatch()
-  const [value,setValue]=useState(false)
-
+  const [nvalue,setNValue]=useState(false)
+  const [fvalue,setFValue]=useState(false)
+  const [wvalue,setWValue]=useState(false)
+  const [tvalue,setTValue]=useState(false)
   
   useEffect(() => {
-     dispatch(allActions.vectorActions.friction(value))
-     dispatch(allActions.vectorActions.normal(value))
-     dispatch(allActions.vectorActions.weight(value))
-     dispatch(allActions.vectorActions.torque(value))
-  }, [])
+     dispatch(allActions.vectorActions.friction(fvalue))
+     dispatch(allActions.vectorActions.normal(nvalue))
+     dispatch(allActions.vectorActions.weight(wvalue))
+     dispatch(allActions.vectorActions.torque(tvalue))
+  })
   const setfriction = () =>{
-    setValue(!value)
-    dispatch(allActions.vectorActions.friction(value))
+    setFValue(!fvalue)
+    dispatch(allActions.vectorActions.friction(fvalue))
   }
   const setnormal = () =>{
-    setValue(!value)
-    dispatch(allActions.vectorActions.normal(value))
+    setNValue(!nvalue)
+    dispatch(allActions.vectorActions.normal(nvalue))
   }
   const setweight = () =>{
-    setValue(!value)
-    dispatch(allActions.vectorActions.weight(value))
+    setWValue(!wvalue)
+    dispatch(allActions.vectorActions.weight(wvalue))
   }
   const settorque = () =>{
-    setValue(!value)
-    dispatch(allActions.vectorActions.torque(value))
+    setTValue(!tvalue)
+    dispatch(allActions.vectorActions.torque(tvalue))
   }
 
   return (
