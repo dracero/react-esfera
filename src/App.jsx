@@ -1,15 +1,16 @@
-import React, { useRef, useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Move from "./Move";
-import { OrbitControls, useGLTF,} from "@react-three/drei";
+import { OrbitControls} from "@react-three/drei";
 import { VRCanvas } from "@react-three/xr";
 import { Button } from "@mui/material";
-//import { Canvas } from "react-three-fiber";
 import {useDispatch} from 'react-redux'
 import allActions from './actions/allActions'
 import {Provider} from 'react-redux'
 import store from "./store/store"
+import { Physics} from "@react-three/cannon"
 
-const App  = (props) => {
+
+const App  = () => {
   const dispatch = useDispatch()
   const [nvalue,setNValue]=useState(false)
   const [fvalue,setFValue]=useState(false)
@@ -38,10 +39,10 @@ const App  = (props) => {
     setTValue(!tvalue)
     dispatch(allActions.vectorActions.torque(tvalue))
   }
-
-  return (
+ 
   
-  <div class="boardCanvas"
+  return (  
+  <div className="boardCanvas"
   style={{ width: "80vw", height: "40vw" }} > 
   <Button variant="outlined" onClick={setfriction}>Rozamiento</Button>
   <p></p>
@@ -51,12 +52,14 @@ const App  = (props) => {
   <p></p>
   <Button variant="outlined" onClick={settorque}>Torque</Button>
   <VRCanvas>
-      <ambientLight />
+    <ambientLight />
       <spotLight />
-      <Provider store={store}>  
-       <Move />
+      <OrbitControls />
+      <Provider store={store}> 
+       <Physics>
+           <Move  />  
+       </Physics>    
       </Provider> 
-    <OrbitControls  />
   </VRCanvas> 
 </div>
 

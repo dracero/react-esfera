@@ -1,25 +1,40 @@
-import React, { useRef} from "react";
+import React, { useRef } from "react";
+import { useLoader, useFrame } from "@react-three/fiber";
 import {useGLTF } from "@react-three/drei";
-//import { VRCanvas } from "@react-three/xr";
 import {useSelector} from 'react-redux'
+import { useController } from "@react-three/xr"
+import { useBox } from "@react-three/cannon"
+import * as THREE from "three"
 
-const Move  = (props) => {
-  const group = useRef();
+
+const Move  = () => {
+  const model = useRef();
+  const rightController = useController("right")
+  const [ref, api] = useBox(() => ({ type: "Kinematic" }))
+  //Acá importa el color y las geometrías, para cambiar el color hay que cambiar el tipo de material
   const { nodes, materials} = useGLTF("/ejeConVector.glb");
+  //Acá estoy usando Hooks de Redux
   const normal = useSelector(state => state.vector.disnor)
   const  torque = useSelector(state => state.vector.distor)
   const  peso = useSelector(state => state.vector.diswei)
   const  friccion = useSelector(state => state.vector.disfric)
-  console.log(torque)
   //const { actions } = useAnimations(animations, group);
+  useFrame((state) => {
+    if (!rightController) {
+      return
+    }
+    const { grip: controller } = rightController
+    const forward = new THREE.Vector3(1, 1, 1)
+    forward.applyQuaternion(controller.quaternion)
+    const position = new THREE.Vector3().copy(controller.position).add(forward)
+    api.position.set(position.x, position.y, position.z)
+    api.rotation.set(controller.rotation.x, controller.rotation.y, controller.rotation.z)
+  })
 
-const momento = () =>{
-   
-}
-  
  return (
-    <group ref={group} {...props} dispose={null}  position = {[2, 0, -1]}>
-    <group name="Scene">
+ <mesh ref={ref} dispose={null} scale={[1, 1, 1]}> 
+  <group >
+    <group name="Scene" dispose={null} position = {[2, 0, -5]} ref={model}>
         <group
           name="Plane"
           position={[-5.29, 10.59, -7.28]}
@@ -155,10 +170,10 @@ const momento = () =>{
         />
        </group>:
        null} 
-      </group>
-  </group>
-  );
-}
+      </group> 
+  </group> 
+  </mesh>
+  );}
 
 useGLTF.preload("/ejeConVector.glb");
 
