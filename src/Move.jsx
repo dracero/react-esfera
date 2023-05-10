@@ -1,4 +1,6 @@
-import React, { useRef, useState, useEffect } from "react";
+// i need to importo useThree to adjust the camera position
+import * as THREE from "three";
+import React, { useRef, useState, useEffect} from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { Html } from "@react-three/drei";
 
@@ -8,7 +10,10 @@ const Move = (props) => {
   const { actions } = useAnimations(animations, group);
   let [removeMesh, setRemoveMesh] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
-  
+ 
+  //I need to adjust the camera position
+  let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1);
+  camera.position.z = 50;
   const removeMeshAfterFrames = () => {
     if (isPlaying) {
       console.log("llega")
@@ -27,6 +32,8 @@ const Move = (props) => {
 
   useEffect(() => {
     actions["movimiento"].play();
+    let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1);
+  camera.position.z = 50;
   },[]);
 
  return (
