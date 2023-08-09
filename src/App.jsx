@@ -11,14 +11,14 @@ const App  = () => {
   
   return (  
   <div className="boardCanvas"
-  style={{ width: "80vw", height: "40vw" }} > 
+  style={{ width: "100vw", height: "40vw" }} > 
   <VRCanvas referenceSpace="local">
-    <ambientLight />
-      <spotLight />
+    <hemisphereLight intensity={1} />
       <OrbitControls />
       <Provider store={store}> 
        <Physics>
-           <Move  />  
+      //I neeed to rotate te cube on z axis
+       <Move position={[0, -1, -9]} rotation={[0, -1.85, 0]}/> 
        </Physics>    
       </Provider> 
   </VRCanvas> 
