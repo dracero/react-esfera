@@ -13,12 +13,13 @@ const App  = () => {
   <div className="boardCanvas"
   style={{ width: "100vw", height: "40vw" }} > 
   <VRCanvas referenceSpace="local">
-    <hemisphereLight intensity={1} />
+   //I need to add a light
+    <directionalLight  intensity={0.5} />
       <OrbitControls />
       <Provider store={store}> 
        <Physics>
       //I neeed to rotate te cube on z axis
-       <Move position={[0, -1, -9]} rotation={[0, -1.85, 0]}/> 
+       <Move position={[0, -1, -1]} rotation={[0, -2.5, 0]}/> 
        </Physics>    
       </Provider> 
   </VRCanvas> 
